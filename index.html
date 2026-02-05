@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine 💘</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      
+      /* efek fade default */
+.fade {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.4s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* animasi lembut untuk teks sedih */
+#sadText {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* tombol makin halus */
+button {
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: system-ui, sans-serif;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 360px;
+      background: white;
+      padding: 28px 22px 32px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+    }
+
+    h1 {
+      font-size: 22px;
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+
+    #mainText {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.5;
+      min-height: 70px;
+    }
+
+    #sadText {
+      font-size: 13px;
+      color: #ff6f91;
+      margin-top: 8px;
+      min-height: 18px;
+    }
+
+    .btn-area {
+      position: relative;
+      height: 130px;
+      margin-top: 22px;
+    }
+
+    button {
+      border: none;
+      border-radius: 40px;
+      padding: 14px 22px;
+      font-size: 15px;
+      font-weight: 600;
+      position: absolute;
+      transition: 0.3s ease;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+      left: 50%;
+      transform: translateX(-50%) scale(1);
+      bottom: 10px;
+      width: 170px;
+      z-index: 2;
+    }
+
+    #no {
+      background: #ddd;
+      color: #444;
+      top: 10px;
+      right: 20px;
+      width: 120px;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hewoo censaa. buat kamu nihh mau gaa?💘</h1>
+
+    <p id="mainText">
+      dari gudboi muu🤍
+    </p>
+
+    <div id="sadText"></div>
+
+    <div class="btn-area">
+      <button id="yes" onclick="yes()">YES ❤️</button>
+      <button id="no" onclick="no()">NO 😔</button>
+    </div>
+  </div>
+
+  <script>
+    let scale = 1;
+    let noIndex = 0;
+
+    const sadTexts = [
+      "kamu yakin? 🥺",
+      "acu angiss loh😢",
+      "tegaa bgt 😔",
+      "HUAAAA AKU ANGIS 🥺😭",
+      "pencet yes ihh😠"
+    ];
+
+    function no() {
+      const yesBtn = document.getElementById("yes");
+      const noBtn = document.getElementById("no");
+      const sadText = document.getElementById("sadText");
+
+      // teks sedih bertahap
+      sadText.innerText = sadTexts[Math.min(noIndex, sadTexts.length - 1)];
+      noIndex++;
+
+      // YES makin gede
+      scale += 0.25;
+      yesBtn.style.transform = `translateX(-50%) scale(${scale})`;
+
+      // NO geser dikit
+      noBtn.style.top = Math.random() * 60 + "px";
+      noBtn.style.right = Math.random() * 40 + "px";
+    }
+
+    function yes() {
+      document.body.innerHTML = `
+        <div style="
+          min-height:100vh;
+          background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+          font-family:system-ui,sans-serif;
+          padding:30px 22px;
+        ">
+          <div style="
+            background:white;
+            border-radius:26px;
+            padding:28px 22px;
+            box-shadow:0 20px 40px rgba(0,0,0,0.3);
+          ">
+            <h1 style="color:#ff4d6d;text-align:center;">
+              BUAT KAMUU💖
+            </h1>
+
+            <p style="color:#555;line-height:1.6;font-size:15px;">
+              maaciiiw yaa<br><br>
+              karnaa kamu dateng disela sela hidupku.
+              jujurr aku gapernah espek bisa ketemu sama orang kayak kamu,
+              rasanyaa nyaman bangett 🫶
+              <br><br>
+              disaat kita bahas hal random, hal seaneh itu tetep kita bahas wkwkwkw.
+              semuanyaa spesial buat akuu💐
+              <br><br>
+              mudah-mudahan kita tetepp bareng yaa, kita berproses bersamaa.
+              meski jarak kita jauhh... tapii aku tetepp bakal support kamu,
+              Karena aku pengenn bareng sama kamu teruss🤍
+              <br><br>
+              <br><br>
+              Happy valentine
+              <br><br>
+              — veer, ur goodboy (btw sori belumm bisa ngasi 🍫 langsung hehehee)
+            </p>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
